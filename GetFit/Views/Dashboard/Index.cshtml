@@ -1,0 +1,59 @@
+﻿@using GetFit.ViewModels;
+@model DashboardVM
+
+<h3>User Dashboard</h3>
+<div>
+    <a asp-area="" asp-controller="Gym" asp-action="Create">Create Gym</a>
+    <a asp-area="" asp-controller="HomeWorkout" asp-action="Create">Create HomeWorkout</a>
+</div>
+<div>
+    <h4>Your Gyms</h4>
+    @foreach(var item in Model.Gyms)
+    {
+        <div>
+            <img src="@item.Image" width="200" height="200" />
+            <h3>@item.Title</h3>
+            <p>@item.Description</p>
+            <h6>@item.GymCategory</h6>
+            <div>
+                <a asp-controller="Gym" asp-action="Detail" asp-route-id="@item.Id">View</a>
+            </div>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div>
+                    <a asp-controller="Gym" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                </div>
+                <div>
+                    <a asp-controller="Gym" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </div>
+            }
+            
+        </div>
+    }
+</div>
+
+<div>
+    <h4>Your Home Workouts</h4>
+    @foreach (var item in Model.Homes)
+    {
+        <div>
+            <img src="@item.Image" width="200" height="200" />
+            <h3>@item.Title</h3>
+            <p>@item.Description</p>
+            <h6>@item.HomeCategory</h6>
+            <div>
+                <a asp-controller="HomeWorkout" asp-action="Detail" asp-route-id="@item.Id">View</a>
+            </div>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div>
+                    <a asp-controller="HomeWorkout" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                </div>
+                <div>
+                    <a asp-controller="HomeWorkout" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </div>
+            }
+
+        </div>
+    }
+</div>

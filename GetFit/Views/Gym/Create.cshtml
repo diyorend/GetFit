@@ -1,0 +1,52 @@
+﻿@using GetFit.Data.Enum;
+@using GetFit.ViewModels;
+@model CreateGymVM
+
+<form method="post" asp-action="Create" enctype="multipart/form-data">
+    <input type="hidden" id="AppUserId" name="AppUserId" asp-for="AppUserId"/>
+    <div>
+        <label asp-for="Title">Title</label>
+        <input asp-for="Title" placeholder="Gym Title" />
+        <span asp-validation-for="Title"></span>
+    </div>
+    <div>
+        <label asp-for="Description">Description</label>
+        <input asp-for="Description" placeholder="Description" />
+        <span asp-validation-for="Description"></span>
+    </div>
+    
+
+    <div>
+        <label asp-for="GymCategory">Gym Category</label>
+        <select asp-for="GymCategory" asp-items="@Html.GetEnumSelectList<GymCategory>()">
+            <option>--Select--</option>
+        </select>
+        <span asp-validation-for="GymCategory"></span>
+    </div>
+
+    <div>
+        <h4>Address</h4>
+        <div>
+            <label asp-for="Address.Street">Street</label>
+            <input asp-for="Address.Street" placeholder="Street" />
+            <span asp-validation-for="Address.Street"></span>
+        </div>
+        <div>
+            <label asp-for="Address.City">City</label>
+            <input asp-for="Address.City" placeholder="City" />
+            <span asp-validation-for="Address.City"></span>
+        </div>
+        <div>
+            <label asp-for="Address.State">State</label>
+            <input asp-for="Address.State" placeholder="State" />
+            <span asp-validation-for="Address.State"></span>
+        </div>
+    </div>
+
+    <div>
+        <label asp-for="Image">Image</label>
+        <input type="file" asp-for="Image" placeholder="Image" />
+        <span asp-validation-for="Image"></span>
+    </div>
+    <button type="submit">Submit</button>
+</form>

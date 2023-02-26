@@ -1,0 +1,29 @@
+﻿@using GetFit.ViewModels;
+@model List<UserVM>
+
+<h1>Users</h1>
+
+<div>
+    @foreach (var user in Model)
+    {
+        <div>
+            <h4>@user.UserName</h4>
+            <p>@user.Weight</p>
+            <p>@user.Height</p>
+            <div>
+                <div>
+                    <a asp-controller="User" asp-action="Detail" asp-route-id="@user.Id">View</a>
+                </div>
+                @if(User.Identity.IsAuthenticated && User.IsInRole("admin"))
+                {
+                    <div>
+                        <a asp-controller="User" asp-action="Edit" asp-route-id="@user.Id">Edit</a>
+                    </div>
+                    <div>
+                        <a asp-controller="User" asp-action="Delete" asp-route-id="@user.Id">Delete</a>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>

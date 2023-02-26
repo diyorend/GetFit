@@ -1,0 +1,30 @@
+﻿@using GetFit.ViewModels;
+@model LoginVM
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div>
+    @if(TempData["Error"] != null)
+    {
+        <div>Sorry! - @TempData["Error"]</div>
+    }
+</div>
+<form asp-action="Login">
+    <div asp-validation-summary="ModelOnly"></div>
+    <div>
+        <label asp-for="EmailAddress"></label>
+        <input asp-for="EmailAddress" />
+        <span asp-validation-for="EmailAddress"></span>
+    </div>
+    <div>
+        <label asp-for="Password"></label>
+        <input asp-for="Password" />
+        <span asp-validation-for="Password"></span>
+    </div>
+    <div>
+        <button type="submit" >Login</button>
+        <a asp-controller="Gym" asp-action="Index">Cancel</a>
+    </div>
+</form>

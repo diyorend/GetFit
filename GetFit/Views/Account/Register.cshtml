@@ -1,0 +1,38 @@
+﻿@using GetFit.ViewModels;
+@model RegisterVM
+
+
+@{
+    ViewData["Title"] = "Sign Up";
+}
+
+<div>
+    @if (TempData["Error"] != null)
+    {
+        <div>Sorry! - @TempData["Error"]</div>
+    }
+</div>
+<div>
+<form asp-action="Register">
+    <div asp-validation-summary="ModelOnly"></div>
+    <div>
+        <label asp-for="EmailAddress"></label>
+        <input asp-for="EmailAddress" />
+        <span asp-validation-for="EmailAddress"></span>
+    </div>
+    <div>
+        <label asp-for="Password"></label>
+        <input asp-for="Password" />
+        <span asp-validation-for="Password"></span>
+    </div>
+    <div>
+        <label asp-for="ConfirmPassword"></label>
+        <input asp-for="ConfirmPassword" />
+        <span asp-validation-for="ConfirmPassword"></span>
+    </div>
+    <div>
+        <button type="submit" >Sign Up</button>
+        <a asp-controller="Gym" asp-action="Index">Cancel</a>
+    </div>
+</form>
+</div>

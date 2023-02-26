@@ -1,0 +1,13 @@
+﻿@model Gym
+
+<div>
+    <img width="200" height="200" src="@Model.Image"/>
+    <h2>@Model.Title</h2>
+    <p>@Model.Description</p>
+    <ul>
+        <li>@Model.Address.Street</li>
+        <li>@Model.Address.City</li>
+        <li>@Model.Address.State</li>
+        <li>@Model.GymCategory</li>
+    </ul>
+</div>
