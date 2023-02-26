@@ -1,0 +1,38 @@
+﻿@using GetFit.ViewModels;
+@model EditUserDashboardVM
+
+<div>
+    <h3>Edit Profile</h3>
+    <div>
+        <form method="post" enctype="multipart/form-data" asp-action="EditUserProfile">
+            <input type="hidden" id="Id" name="Id" asp-for="Id"/>
+            <div>
+                <label asp-for="Weight">Weight</label>
+                <input asp-for="Weight" placeholder="Weight" />
+                <span asp-validation-for="Weight"></span>
+            </div>
+            <div>
+                <label asp-for="Height">Height</label>
+                <input asp-for="Height" placeholder="Height" />
+                <span asp-validation-for="Height"></span>
+            </div>
+            <div>
+                <label asp-for="City">City</label>
+                <input asp-for="City" placeholder="City" />
+                <span asp-validation-for="City"></span>
+            </div>
+            <div>
+                <label asp-for="State">State</label>
+                <input asp-for="State" placeholder="State" />
+                <span asp-validation-for="State"></span>
+            </div>
+            <div>
+                <label asp-for="Image">Image</label>
+                <input asp-for="Image" type="file" placeholder="Image" />
+                <span asp-validation-for="Image"></span>
+            </div>
+            <button type="submit">Submit</button>
+
+        </form>
+    </div>
+</div>

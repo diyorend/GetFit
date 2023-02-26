@@ -7,9 +7,10 @@
     @foreach (var user in Model)
     {
         <div>
+            <img src="@user.ProfileImageUrl" width="50" height="50" />
             <h4>@user.UserName</h4>
-            <p>@user.Weight</p>
-            <p>@user.Height</p>
+            <p>Weight @user.Weight</p>
+            <p>Height @user.Height</p>
             <div>
                 <div>
                     <a asp-controller="User" asp-action="Detail" asp-route-id="@user.Id">View</a>

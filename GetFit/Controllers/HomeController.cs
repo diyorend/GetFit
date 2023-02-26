@@ -1,21 +1,55 @@
-﻿using GetFit.Models;
+﻿using GetFit.Helper;
+using GetFit.Interfaces;
+using GetFit.Models;
+using GetFit.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Diagnostics;
+using System.Globalization;
+using System.Net;
 
 namespace GetFit.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IGymRepository _gymRepository;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IGymRepository gymRepository)
         {
             _logger = logger;
+            _gymRepository = gymRepository;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var ipInfo = new IPInfo();
+            var homeVM = new HomeVM();
+            try
+            {
+                string url = "https://ipinfo.io?token=af247e51fbe8e2";
+                var info = new WebClient().DownloadString(url);
+                ipInfo = JsonConvert.DeserializeObject<IPInfo>(info);
+                RegionInfo myRI1 = new RegionInfo(ipInfo.Country);
+                ipInfo.Country = myRI1.EnglishName;
+                homeVM.City = ipInfo.City;
+                homeVM.State = ipInfo.Region;
+                if(homeVM.City != null)
+                {
+                    homeVM.Gyms = await _gymRepository.GetGymByCity(homeVM.City);
+
+                }
+                else
+                {
+                    homeVM.Gyms = null;
+                }
+                return View(homeVM);
+            }
+            catch (Exception ex)
+            {
+                homeVM.Gyms = null;
+            }
+            return View(homeVM);
         }
 
         public IActionResult Privacy()

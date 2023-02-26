@@ -25,6 +25,7 @@ namespace GetFit.Controllers
                     Id= user.Id,
                     Height= user.Height,
                     Weight= user.Weight,
+                    ProfileImageUrl = user.ProfileImageUrl,
                 };
                 result.Add(userVM);
             };
