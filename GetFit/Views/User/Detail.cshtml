@@ -1,8 +1,30 @@
 ﻿@using GetFit.ViewModels;
 @model UserDetailVM
 
-<div>
-    <h4>@Model.UserName</h4>
-    <p>@Model.Height</p>
-    <p>@Model.Weight</p>
+
+<div class="profile my-4">
+    <div class="profile-img">
+        <div>
+            <img src="@Model.ProfileImageUrl" alt="Profile Image" />
+            </div>
+        </div>
+    <div class="profile-desc">
+        <div class="d-flex ">
+            <h4 class="">@Model.UserName</h4>
+            </div>
+        <div>
+            @if (Model.Name != null)
+            {
+                    <h2>@Model.Name</h2>
+            }
+            @if (Model.Weight != null)
+            {
+                    <p>Weight: @Model.Weight kg</p>
+            }
+            @if (Model.Height != null)
+            {
+                    <p>Height: @Model.Height cm</p>
+            }
+        </div>
+    </div>
 </div>

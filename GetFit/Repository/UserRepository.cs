@@ -13,16 +13,6 @@ namespace GetFit.Repository
         {
             _context = context;
         }
-        public bool Add(AppUser user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Delete(AppUser user)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<IEnumerable<AppUser>> GetAllUsersAsync()
         {
             return await _context.Users.ToListAsync();
@@ -37,12 +27,6 @@ namespace GetFit.Repository
         {
             var saved = _context.SaveChanges();
             return saved > 0 ? true : false;
-        }
-
-        public bool Update(AppUser user)
-        {
-            _context.Users.Update(user);
-            return Save();
         }
     }
 }

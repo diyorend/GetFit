@@ -12,7 +12,5 @@
         public string? ProfileImageUrl { get; set; }
         public string UserName { get; set; }
 
-
-
     }
 }

@@ -43,6 +43,8 @@ namespace GetFit.Controllers
                 UserName = user.UserName,
                 Weight = user.Weight,
                 Height = user.Height,
+                Gyms= user.Gyms,
+                ProfileImageUrl = user.ProfileImageUrl,
             };
             return View(userDetailVM);
         }
