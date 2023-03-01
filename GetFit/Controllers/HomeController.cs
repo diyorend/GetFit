@@ -14,17 +14,31 @@ namespace GetFit.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IGymRepository _gymRepository;
+        private readonly IUserRepository _userRepository;
 
-        public HomeController(ILogger<HomeController> logger, IGymRepository gymRepository)
+        public HomeController(ILogger<HomeController> logger,
+            IGymRepository gymRepository,
+            IUserRepository userRepository)
         {
             _logger = logger;
             _gymRepository = gymRepository;
+            _userRepository = userRepository;
         }
 
         public async Task<IActionResult> Index()
         {
             var ipInfo = new IPInfo();
-            var homeVM = new HomeVM();
+            var users = await _userRepository.GetAllUsersAsync();
+            
+            if (users.Count() > 5) 
+            {
+                users.ToList().RemoveRange(5,users.Count() - 5);
+            }
+            var homeVM = new HomeVM()
+            {
+                Users = users.ToList(),
+            };
+            
             try
             {
                 string url = "https://ipinfo.io?token=af247e51fbe8e2";
