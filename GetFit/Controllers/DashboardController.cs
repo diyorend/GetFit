@@ -29,15 +29,19 @@ namespace GetFit.Controllers
             ImageUploadResult photoResult)
         {
             user.Id = editUserVM.Id;
+            user.Name = editUserVM.Name;
             user.Weight = editUserVM.Weight;
             user.Height = editUserVM.Height;
             user.ProfileImageUrl = photoResult.Url.ToString();
             user.City = editUserVM.City;
             user.State = editUserVM.State;
+            user.UserName = editUserVM.UserName;
 
         }
         public async Task<IActionResult> Index()
         {
+            var currentUserId = _httpContextAccessor.HttpContext.User.GetUserId();
+            var user = await _dashboardRepository.GetUserByIdNoTracking(currentUserId);
             var userGyms = await _dashboardRepository.GetAllUserGyms();
             var userHomes = await _dashboardRepository.GetAllUserHomes();
 
@@ -45,6 +49,7 @@ namespace GetFit.Controllers
             {
                 Homes = userHomes,
                 Gyms = userGyms,
+                AppUser = user,
             };
 
             return View(dashboardVM);
@@ -57,11 +62,13 @@ namespace GetFit.Controllers
             var editUserVM = new EditUserDashboardVM()
             {
                 Id = currentUserId,
+                Name = user.Name,
                 Weight = user.Weight,
                 Height = user.Height,
                 ProfileImageUrl = user.ProfileImageUrl,
                 City = user.City,
                 State = user.State,
+                UserName = user.UserName,
             };
             return View(editUserVM);
         }

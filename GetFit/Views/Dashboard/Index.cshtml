@@ -1,60 +1,80 @@
 ﻿@using GetFit.ViewModels;
 @model DashboardVM
 
-<h3>User Dashboard</h3>
-<div>
-    <a asp-area="" asp-controller="Gym" asp-action="Create">Create Gym</a>
-    <a asp-area="" asp-controller="HomeWorkout" asp-action="Create">Create HomeWorkout</a>
-    <a asp-area="" asp-controller="Dashboard" asp-action="EditUserProfile">Edit Profile</a>
+<div class="profile my-4">
+    <div class="profile-img">
+        <div>
+            <img src="@Model.AppUser.ProfileImageUrl" alt="Profile Image" />
+        </div>
+    </div>
+    <div class="profile-desc">
+        <div class="d-flex ">
+            <h4 class="">@Model.AppUser.UserName</h4>
+            <div class="mx-2">
+                <a class="btn btn-info" asp-area="" asp-controller="Dashboard" asp-action="EditUserProfile">Edit Profile</a>
+                <a class="btn btn-danger" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
+            </div>
+        </div>
+        <div>
+            @if (Model.AppUser.Name != null)
+            {
+                <h2>@Model.AppUser.Name</h2>
+            }
+            @if  (Model.AppUser.Weight != null)
+            {
+                <p>Weight: @Model.AppUser.Weight kg</p>
+            }
+            @if (Model.AppUser.Height != null)
+            {
+                <p>Height: @Model.AppUser.Height cm</p>
+            }
+        </div>
+    </div>
 </div>
-<div>
-    <h4>Your Gyms</h4>
+
+<div class="my-3">
+    <a class="btn btn-dark" asp-area="" asp-controller="Gym" asp-action="Create"><i class="bi bi-plus-circle-fill px-1"></i> Gym</a>
+    <a class="btn btn-dark" asp-area="" asp-controller="HomeWorkout" asp-action="Create"><i class="bi bi-plus-circle-fill px-1"></i> Workout</a>
+</div>
+
+<div class="my-5">
+    <h4>Gyms @Model.Gyms.Count()</h4>
+    <div class="grid-con">
     @foreach(var item in Model.Gyms)
     {
-        <div>
-            <img src="@item.Image" width="200" height="200" />
-            <h3>@item.Title</h3>
-            <p>@item.Description</p>
-            <h6>@item.GymCategory</h6>
-            <div>
-                <a asp-controller="Gym" asp-action="Detail" asp-route-id="@item.Id">View</a>
+        <div class="card" style="width: 17rem;">
+            <img src="@item.Image" class="card-img-top" alt="@item.Title">
+            <div class="card-body">
+                <h5 class="card-title">@item.Title</h5>
+                <a class="btn btn-info" asp-controller="Gym" asp-action="Detail" asp-route-id="@item.Id">View</a>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a class="btn btn-secondary" asp-controller="Gym" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-fill"></i></a>
+                    <a class="btn btn-danger" asp-controller="Gym" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash3-fill"></i></a>
+                }
             </div>
-            @if (User.Identity.IsAuthenticated)
-            {
-                <div>
-                    <a asp-controller="Gym" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                </div>
-                <div>
-                    <a asp-controller="Gym" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </div>
-            }
-            
         </div>
     }
+    </div>
 </div>
 
-<div>
-    <h4>Your Home Workouts</h4>
-    @foreach (var item in Model.Homes)
+<div class="my-5">
+    <h4>Workouts @Model.Homes.Count()</h4>
+    <div class="grid-con">
+    @foreach(var item in Model.Homes)
     {
-        <div>
-            <img src="@item.Image" width="200" height="200" />
-            <h3>@item.Title</h3>
-            <p>@item.Description</p>
-            <h6>@item.HomeCategory</h6>
-            <div>
-                <a asp-controller="HomeWorkout" asp-action="Detail" asp-route-id="@item.Id">View</a>
+        <div class="card" style="width: 17rem;">
+            <img src="@item.Image" class="card-img-top" alt="@item.Title">
+                <div class="card-body">
+                <h5 >@item.Title</h5>
+                <a class="btn btn-info" asp-controller="Home" asp-action="Detail" asp-route-id="@item.Id">View</a>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a class="btn btn-secondary" asp-controller="Home" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-fill"></i></a>
+                    <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash3-fill"></i></a>
+                }
             </div>
-            @if (User.Identity.IsAuthenticated)
-            {
-                <div>
-                    <a asp-controller="HomeWorkout" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                </div>
-                <div>
-                    <a asp-controller="HomeWorkout" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </div>
-            }
-
         </div>
     }
+    </div>
 </div>

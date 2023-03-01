@@ -21,6 +21,7 @@ namespace GetFit.Controllers
             {
                 var userVM = new UserVM()
                 {
+                    Name = user.Name,
                     UserName = user.UserName,
                     Id= user.Id,
                     Height= user.Height,
@@ -38,6 +39,7 @@ namespace GetFit.Controllers
             var userDetailVM = new UserDetailVM()
             {
                 Id = user.Id,
+                Name = user.Name,
                 UserName = user.UserName,
                 Weight = user.Weight,
                 Height = user.Height,

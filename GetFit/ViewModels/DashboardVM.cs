@@ -6,5 +6,6 @@ namespace GetFit.ViewModels
     {
         public List<Gym> Gyms { get; set; } 
         public List<Home> Homes { get; set; }
+        public AppUser AppUser { get; set; }
     }
 }
