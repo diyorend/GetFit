@@ -3,51 +3,51 @@
 @model EditHomeVM
 
 
-<form method="post" asp-action="Edit" enctype="multipart/form-data">
+<h4>Edit Workout</h4>
+<form method="post" asp-action="Create" enctype="multipart/form-data">
     <input type="hidden" value="AddressId" id="AddressId" />
-    <div>
-        <label asp-for="Title">Title</label>
-        <input asp-for="Title" placeholder="Gym Title" />
+    <div class="form-group">
+        <label class="form-label" asp-for="Title">Title</label>
+        <input class="form-control" asp-for="Title" placeholder="Gym Title" />
         <span asp-validation-for="Title"></span>
     </div>
-    <div>
-        <label asp-for="Description">Description</label>
-        <input asp-for="Description" placeholder="Description" />
+    <div class="form-group">
+        <label class="form-label" asp-for="Description">Description</label>
+        <input class="form-control" asp-for="Description" placeholder="Description" />
         <span asp-validation-for="Description"></span>
     </div>
 
-
-    <div>
-        <label asp-for="HomeCategory">Home Category</label>
-        <select asp-for="HomeCategory" asp-items="@Html.GetEnumSelectList<HomeCategory>()">
+    <div class="form-group">
+        <label class="form-label" asp-for="HomeCategory">Gym Category</label>
+        <select class="form-control" asp-for="HomeCategory" asp-items="@Html.GetEnumSelectList<HomeCategory>()">
             <option selected="selected">--Select--</option>
         </select>
         <span asp-validation-for="HomeCategory"></span>
     </div>
 
-    <div>
-        <h4>Address</h4>
-        <div>
-            <label asp-for="Address.Street">Street</label>
-            <input asp-for="Address.Street" placeholder="Street" />
+    <div class="my-3">
+        <h5>Address</h5>
+        <div class="form-group">
+            <label class="form-label" asp-for="Address.Street">Street</label>
+            <input class="form-control" asp-for="Address.Street" placeholder="Street" />
             <span asp-validation-for="Address.Street"></span>
         </div>
-        <div>
-            <label asp-for="Address.City">City</label>
-            <input asp-for="Address.City" placeholder="City" />
+        <div class="form-group">
+            <label class="form-label" asp-for="Address.City">City</label>
+            <input class="form-control" asp-for="Address.City" placeholder="City" />
             <span asp-validation-for="Address.City"></span>
         </div>
-        <div>
-            <label asp-for="Address.State">State</label>
-            <input asp-for="Address.State" placeholder="State" />
+        <div class="form-group">
+            <label class="form-label" asp-for="Address.State">State</label>
+            <input class="form-control" asp-for="Address.State" placeholder="State" />
             <span asp-validation-for="Address.State"></span>
         </div>
     </div>
 
-    <div>
-        <label asp-for="Image">Image</label>
-        <input type="file" asp-for="Image" placeholder="Update Image" />
+    <div class="form-group">
+        <label class="form-label" asp-for="Image">Image</label>
+        <input class="form-control-file" type="file" asp-for="Image" />
         <span asp-validation-for="Image"></span>
     </div>
-    <button type="submit">Submit</button>
+    <button class="btn btn-primary my-3" type="submit">Update</button>
 </form>

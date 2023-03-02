@@ -3,46 +3,47 @@
 
 <div>
     <h3>Edit Profile</h3>
-    <div>
-        <form method="post" enctype="multipart/form-data" asp-action="EditUserProfile">
-            <input type="hidden" id="Id" name="Id" asp-for="Id"/>
-            <div>
-                <label asp-for="Name">Name</label>
-                <input asp-for="Name" placeholder="Name" />
-                <span asp-validation-for="Name"></span>
-            </div>
-            <div>
-                <label asp-for="UserName">UserName</label>
-                <input asp-for="UserName" placeholder="UserName" />
-                <span asp-validation-for="UserName"></span>
-            </div>
-            <div>
-                <label asp-for="Weight">Weight</label>
-                <input asp-for="Weight" placeholder="Weight" />
-                <span asp-validation-for="Weight"></span>
-            </div>
-            <div>
-                <label asp-for="Height">Height</label>
-                <input asp-for="Height" placeholder="Height" />
-                <span asp-validation-for="Height"></span>
-            </div>
-            <div>
-                <label asp-for="City">City</label>
-                <input asp-for="City" placeholder="City" />
-                <span asp-validation-for="City"></span>
-            </div>
-            <div>
-                <label asp-for="State">State</label>
-                <input asp-for="State" placeholder="State" />
-                <span asp-validation-for="State"></span>
-            </div>
-            <div>
-                <label asp-for="Image">Image</label>
-                <input asp-for="Image" type="file" placeholder="Image" />
-                <span asp-validation-for="Image"></span>
-            </div>
-            <button type="submit">Submit</button>
 
-        </form>
-    </div>
+    <form method="post" enctype="multipart/form-data" asp-action="EditUserProfile">
+        
+        <input type="hidden" id="Id" name="Id" asp-for="Id"/>
+        <div class="form-group">
+            <label asp-for="Name">Name</label>
+            <input class="form-control" asp-for="Name" placeholder="Name" />
+            <span asp-validation-for="Name"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="UserName">UserName</label>
+            <input class="form-control" asp-for="UserName" placeholder="UserName" />
+            <span asp-validation-for="UserName"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Weight">Weight</label>
+            <input class="form-control" asp-for="Weight" placeholder="Weight" />
+            <span asp-validation-for="Weight"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Height">Height</label>
+            <input class="form-control" asp-for="Height" placeholder="Height" />
+            <span asp-validation-for="Height"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="City">City</label>
+            <input class="form-control" asp-for="City" placeholder="City" />
+            <span asp-validation-for="City"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="State">State</label>
+            <input class="form-control" asp-for="State" placeholder="State" />
+            <span asp-validation-for="State"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Image">Image</label>
+            <input lass="form-control-file" asp-for="Image" type="file" placeholder="Image" />
+            <span asp-validation-for="Image"></span>
+        </div>
+        <button class="btn btn-primary my-3" type="submit">Update</button>
+       
+    </form>
+
 </div>
