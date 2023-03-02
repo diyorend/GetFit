@@ -16,7 +16,7 @@ namespace GetFit.Models
         public Address Address { get; set; }
         public HomeCategory HomeCategory { get; set; }
         [ForeignKey("AppUser")]
-        public string? AppUserId { get; set; }
-        public AppUser? AppUser { get; set; } 
+        public string AppUserId { get; set; }
+        public AppUser AppUser { get; set; } 
     }
 }

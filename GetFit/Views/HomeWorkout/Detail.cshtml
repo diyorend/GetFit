@@ -1,13 +1,15 @@
 ﻿@model Home
 
-<div>
-    <img height="200" width="200" src="@Model.Image"/>
-    <h2>@Model.Title</h2>
-    <p>@Model.Description</p>
-    <ul>
-        <li>@Model.Address.Street</li>
-        <li>@Model.Address.City</li>
-        <li>@Model.Address.State</li>
-        <li>@Model.HomeCategory</li>
-    </ul>
+<div style="display:flex; justify-content:center;align-items:center; height:100%; width:100%">
+    <div style="display:flex; justify-content:space-between; height:90%; width:90%; margin:auto">
+        <div style="flex:1" >
+            <img class="w-100 h-100" src="@Model.Image" />
+        </div>
+        <div style="flex:1" class="px-3">
+            <h2>@Model.Title </h2>
+            <p>Description: @Model.Description</p>
+            <span style="font-size:1.3rem">Category: @Model.HomeCategory</span>
+            <h4>Location: @Model.Address.City</h4>
+        </div>
+    </div>
 </div>
