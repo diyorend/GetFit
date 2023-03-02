@@ -15,24 +15,24 @@
 <div>
 <form asp-action="Register">
     <div asp-validation-summary="ModelOnly"></div>
-    <div>
-        <label asp-for="EmailAddress"></label>
-        <input asp-for="EmailAddress" />
+    <div class="form-group">
+        <label class="form-label" asp-for="EmailAddress"></label>
+        <input class="form-control" asp-for="EmailAddress" />
         <span asp-validation-for="EmailAddress"></span>
     </div>
-    <div>
-        <label asp-for="Password"></label>
-        <input asp-for="Password" />
+    <div class="form-group">
+        <label class="form-label" asp-for="Password"></label>
+        <input class="form-control" asp-for="Password" />
         <span asp-validation-for="Password"></span>
     </div>
-    <div>
-        <label asp-for="ConfirmPassword"></label>
-        <input asp-for="ConfirmPassword" />
-        <span asp-validation-for="ConfirmPassword"></span>
+    <div class="form-group">
+        <label class="form-label" asp-for="ConfirmPassword"></label>
+        <input class="form-control" asp-for="ConfirmPassword" />
+    <span asp-validation-for="ConfirmPassword"></span>
     </div>
-    <div>
-        <button type="submit" >Sign Up</button>
-        <a asp-controller="Gym" asp-action="Index">Cancel</a>
+    <div class="form-group my-3">
+        <button class="btn btn-primary" type="submit">Sign Up</button>
+        <a class="btn btn-outline-secondary" asp-controller="Home" asp-action="Index">Cancel</a>
     </div>
 </form>
 </div>
